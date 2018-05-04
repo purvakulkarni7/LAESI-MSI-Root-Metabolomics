@@ -1,0 +1,21 @@
+mSet<-InitDataObjects("pktable", "stat", FALSE)
+mSet<-Read.TextData(mSet, "Replacing_with_your_file_path", "colu", "disc");
+mSet<-SanityCheckData(mSet)
+mSet<-ReplaceMin(mSet);
+mSet<-Normalization(mSet, "MedianNorm", "LogNorm", "AutoNorm", "CJ1", ratio=FALSE, ratioNum=20)
+mSet<-PlotNormSummary(mSet, "norm_0_", "png", 72, width=NA)
+mSet<-PlotSampleNormSummary(mSet, "snorm_0_", "png", 72, width=NA)
+mSet<-Normalization(mSet, "MedianNorm", "LogNorm", "MeanCenter", "CJ1", ratio=FALSE, ratioNum=20)
+mSet<-PlotNormSummary(mSet, "norm_1_", "png", 72, width=NA)
+mSet<-PlotSampleNormSummary(mSet, "snorm_1_", "png", 72, width=NA)
+mSet<-Normalization(mSet, "MedianNorm", "LogNorm", "AutoNorm", "CJ1", ratio=FALSE, ratioNum=20)
+mSet<-PlotNormSummary(mSet, "norm_2_", "png", 72, width=NA)
+mSet<-PlotSampleNormSummary(mSet, "snorm_2_", "png", 72, width=NA)
+mSet<-PCA.Anal(mSet)
+mSet<-PlotPCAPairSummary(mSet, "pca_pair_0_", "png", 72, width=NA, 5)
+mSet<-PlotPCAScree(mSet, "pca_scree_0_", "png", 72, width=NA, 5)
+mSet<-PlotPCA2DScore(mSet, "pca_score2d_0_", "png", 72, width=NA, 1,2,0.95,1,0)
+mSet<-PlotPCALoading(mSet, "pca_loading_0_", "png", 72, width=NA, 1,2,"scatter", 1);
+mSet<-PlotPCABiplot(mSet, "pca_biplot_0_", "png", 72, width=NA, 1,2)
+mSet<-PlotPCA3DScore(mSet, "pca_score3d_0_", "json", 1,2,3)
+mSet<-PlotHCTree(mSet, "tree_0_", "png", 72, width=NA, "euclidean", "ward.D")
